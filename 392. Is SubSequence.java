@@ -28,23 +28,20 @@ Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 
   */
 
 class Solution {
-public:
-    bool isSubsequence(string s, string t) {
-        int n = s.length(),m=t.length();
-        int j = 0; 
-    // For index of s (or subsequence
- 
-    // Traverse s and t, and
-    // compare current character
-    // of s with first unmatched char
-    // of t, if matched
-    // then move ahead in s
-    for (int i = 0; i < m and j < n; i++)
-        if (s[j] == t[i])
-            j++;
- 
-    // If all characters of s were found in t
-    return (j == n);
-        
+    public static boolean isSubsequence(String s, String t) {
+        if(s.length()==0)return true;
+        int sptr=0;
+        int tptr=0;
+
+        while(tptr<t.length()){
+            
+            if(s.charAt(sptr)==t.charAt(tptr)){
+                sptr++;
+            }
+            tptr++;
+            
+            if (sptr==s.length()) return true;   
+        }
+        return false;
     }
-};
+}
