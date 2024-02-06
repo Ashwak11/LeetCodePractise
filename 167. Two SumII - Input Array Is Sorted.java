@@ -36,18 +36,23 @@ The tests are generated such that there is exactly one solution.
   */
 
 class Solution {
-public:
-    vector<int> twoSum(vector<int>& numbers, int target) {
-        int low = 0;
-        int high = numbers.size() - 1;
-        while(low <= high) {
-            if(numbers[low] + numbers[high] == target) return {low + 1, high + 1};
-            else if(numbers[low] + numbers[high] < target) {
-                low++;
-            } else {
-                high--;
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int max = 0;
+        while(left < right){
+            int w = right - left;
+            int h = Math.min(height[left], height[right]);
+            int area = h * w;
+            max = Math.max(max, area);
+            if(height[left] < height[right]) left++;
+            else if(height[left] > height[right]) right--;
+            else {
+                left++;
+                right--;
             }
         }
-        return {};
+        return max;
     }
-};
+}
+
