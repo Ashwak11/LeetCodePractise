@@ -35,24 +35,22 @@ The tests are generated such that there is exactly one solution.
 
   */
 
-class Solution {
-    public int maxArea(int[] height) {
-        int left = 0;
-        int right = height.length - 1;
-        int max = 0;
-        while(left < right){
-            int w = right - left;
-            int h = Math.min(height[left], height[right]);
-            int area = h * w;
-            max = Math.max(max, area);
-            if(height[left] < height[right]) left++;
-            else if(height[left] > height[right]) right--;
-            else {
-                left++;
-                right--;
-            }
-        }
-        return max;
+public int[] twoSum(int[] numbers, int target) {
+    
+    int left=0,right=numbers.length-1;
+    
+    while(left<right)
+    {
+        int sum=numbers[left]+numbers[right];
+        if(sum==target)
+            return new int[]{left+1,right+1};
+        else if(sum>target)
+            right--;
+        else if(sum<target)
+            left++;
     }
+    return new int[]{};
 }
+
+
 
